@@ -354,13 +354,5 @@ public class GUIController<T>
             parentFrame.repaint();
         }
     }
-    
-    public boolean locArrayContains(Location[] locs, Location loc)
-    {
-        for(Location L : locs)
-        		if(L != null && loc != null)
-            		if(L.equals(loc))
-                		return true;
-        return false;
-    }
+
 }
