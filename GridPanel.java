@@ -260,33 +260,6 @@ public class GridPanel extends JPanel implements Scrollable,
     }
 
     /**
-     * Draws a watermark that shows the version number if it is < 1.0
-     * @param g2 the graphics context
-     */
-    private void drawWatermark(Graphics2D g2)
-    {
-        if ("hide".equals(System.getProperty("info.gridworld.gui.watermark")))
-            return;
-        g2 = (Graphics2D) g2.create();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-        Rectangle rect = getBounds();
-        g2.setPaint(new Color(0xE3, 0xD3, 0xD3));
-        final int WATERMARK_FONT_SIZE = 100;
-        String s = resources.getString("version.id");
-        if ("1.0".compareTo(s) <= 0) return;
-        g2.setFont(new Font("SansSerif", Font.BOLD, WATERMARK_FONT_SIZE));
-        FontRenderContext frc = g2.getFontRenderContext();
-        Rectangle2D bounds = g2.getFont().getStringBounds(s, frc);
-        float centerX = rect.x + rect.width / 2;
-        float centerY = rect.y + rect.height / 2;
-        float leftX = centerX - (float) bounds.getWidth() / 2;
-        LineMetrics lm = g2.getFont().getLineMetrics(s, frc);
-        float baselineY = centerY - lm.getHeight() / 2 + lm.getAscent();
-        g2.drawString(s, leftX, baselineY);
-    }
-
-    /**
      * Enables/disables showing of tooltip giving information about the
      * occupant beneath the mouse.
      * @param flag true/false to enable/disable tool tips
