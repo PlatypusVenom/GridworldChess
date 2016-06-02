@@ -241,7 +241,6 @@ public class GUIController<T>
             			JPopupMenu popup = maker.makePromoteMenu(occupant0, loc);
             			Point p = display.pointForLocation(loc);
             			popup.show(display, p.x, p.y);
-            			checkStatus(C);
                     }
                     else
                     {
