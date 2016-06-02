@@ -135,6 +135,7 @@ public class MenuMaker<T>
         		master.setMenuOpen(false);
         		master.getDisplay().setCurrentLocation(null);
         		parent.repaint();
+        		master.checkStatus();
         	}
         	catch(ClassNotFoundException e)
         	{System.out.println("ClassNotFoundException: "+e.getMessage());}
