@@ -70,7 +70,7 @@ public class King extends ChessPiece
       Location LRLoc = new Location(getLocation().getRow(),getLocation().getCol()+dl);
 
       Rook LR = null;
-      if(getGrid().get(LRLoc) != null)
+      if(getGrid().get(LRLoc) != null && getGrid().get(LRLoc) instanceof Rook)
       {
           LR = (Rook)(getGrid().get(LRLoc));
       	  LR.cLaunched(true, dl, dr);
@@ -84,7 +84,7 @@ public class King extends ChessPiece
       Location RRLoc = new Location(getLocation().getRow(),getLocation().getCol()+dr);
 
       Rook RR = null;
-      if(getGrid().get(RRLoc) != null)
+      if(getGrid().get(RRLoc) != null && getGrid().get(RRLoc) instanceof Rook)
       {
         RR = (Rook)(getGrid().get(RRLoc));
       	RR.cLaunched(false, dl, dr); //cLaunched stands for Castling Launched

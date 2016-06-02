@@ -216,6 +216,7 @@ public class GUIController<T>
                 ChessPiece C = (ChessPiece)occupant0;
                 if(menuOpen)
                 {
+                	
     				setMenuOpen(false);
         			C.moveTo(prevLoc0);
 	    			if(other != null)
@@ -240,29 +241,14 @@ public class GUIController<T>
             			JPopupMenu popup = maker.makePromoteMenu(occupant0, loc);
             			Point p = display.pointForLocation(loc);
             			popup.show(display, p.x, p.y);
+            			checkStatus(C);
                     }
                     else
                     {
                         C.moveTo(loc);
                         ChessBoard.takeTurn();
                         display.repaint();
-                        
-                        if(ChessBoard.getEndMessage(C) != null)
-                        {
-                        	System.out.println(ChessBoard.getEndMessage(C));
-                        	if(ChessBoard.getEndMessage(C).endsWith("Wins!"))
-                        	{
-                        		String s = parentFrame.getHistMessage();
-                        		parentFrame.setHistMessage(s + "#");
-                        	}
-                        	display.createDialogue(ChessBoard.getEndMessage(C));
-                        }
-                        else if(ChessBoard.check(C))
-                        {
-                        	String s = parentFrame.getHistMessage();
-                        	parentFrame.setHistMessage(s + "+");
-                        	display.createDialogue("Check!");
-                        }
+                        checkStatus(C);
                     }
                 }
                 else if(occupant != null)
@@ -305,5 +291,25 @@ public class GUIController<T>
             		if(L.equals(loc))
                 		return true;
         return false;
+    }
+    
+    public void checkStatus(ChessPiece C)
+    {
+    	if(ChessBoard.getEndMessage(C) != null)
+        {
+        	System.out.println(ChessBoard.getEndMessage(C));
+        	if(ChessBoard.getEndMessage(C).endsWith("Wins!"))
+        	{
+        		String s = parentFrame.getHistMessage();
+        		parentFrame.setHistMessage(s + "#");
+        	}
+        	display.createDialogue(ChessBoard.getEndMessage(C));
+        }
+        else if(ChessBoard.check(C))
+        {
+        	String s = parentFrame.getHistMessage();
+        	parentFrame.setHistMessage(s + "+");
+        	display.createDialogue("Check!");
+        }
     }
 }
