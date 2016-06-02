@@ -127,15 +127,16 @@ public class MenuMaker<T>
         		Class Cls = Class.forName(event.getActionCommand());
         		Constructor Con = Cls.getConstructor(ClsList);
         		Object obj = Con.newInstance(cp.getColorType());
+        		ChessPiece C = (ChessPiece)obj;
         		
         		cp.removeSelfFromGrid();
-        		ChessBoard.add(currentLocation, (ChessPiece)obj);
+        		ChessBoard.add(currentLocation, C);
         		
         		ChessBoard.takeTurn();
         		master.setMenuOpen(false);
         		master.getDisplay().setCurrentLocation(null);
         		parent.repaint();
-        		master.checkStatus();
+        		master.checkStatus(C);
         	}
         	catch(ClassNotFoundException e)
         	{System.out.println("ClassNotFoundException: "+e.getMessage());}
