@@ -120,6 +120,7 @@ public class MenuMaker<T>
         	try
         	{
         		ChessPiece cp = (ChessPiece)occupant;
+        		Location loc = master.getDisplay().getPreviousLocation();
         		
         		Class[] ClsList = new Class[1];
         		ClsList[0] = Character.TYPE;
@@ -129,12 +130,19 @@ public class MenuMaker<T>
         		Object obj = Con.newInstance(cp.getColorType());
         		ChessPiece C = (ChessPiece)obj;
         		
+        		String letter = event.getActionCommand().substring(0, 1);
+        		String pawnNote = cp.getNotation(currentLocation);
+        		if(letter.equals("K"))
+        			letter = "N";
+        		String notation = pawnNote + letter;
+        		
         		cp.removeSelfFromGrid();
         		ChessBoard.add(currentLocation, C);
         		
         		ChessBoard.takeTurn();
         		master.setMenuOpen(false);
         		master.getDisplay().setCurrentLocation(null);
+				parent.addHistMessage(notation);
         		parent.repaint();
         		master.checkStatus(C);
         	}

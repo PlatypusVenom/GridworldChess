@@ -247,7 +247,6 @@ public class GUIController<T>
                         C.moveTo(loc);
                         ChessBoard.takeTurn();
                         display.repaint();
-                        checkStatus(C); 
                     }
                 }
                 else if(occupant != null)

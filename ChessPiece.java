@@ -96,10 +96,7 @@ public abstract class ChessPiece extends Actor implements Comparable
 				if(this instanceof Pawn)
 				{
 					col = getLocation().getCol();
-					if(col == 7)
-				        s += 'h';
-				    else
-				        s += key.substring(col, col+1);
+					s += key.substring(col, col+1);
 				}
 		        s += 'x';
 			}
@@ -121,10 +118,7 @@ public abstract class ChessPiece extends Actor implements Comparable
 				if(this instanceof Pawn)
 				{
 					col = getLocation().getCol();
-					if(col == 7)
-			        	s += 'a';
-			    	else
-			        	s += reverseKey.substring(col, col+1);	
+					s += reverseKey.substring(col, col+1);	
 				}
 				
 		        s += 'x';
@@ -139,7 +133,7 @@ public abstract class ChessPiece extends Actor implements Comparable
 		}
 		
 		if(getPassedPawn() != null)
-			s += " e.p.";
+			s += "e.p.";
 		
 		return s;
   	}
