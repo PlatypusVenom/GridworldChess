@@ -120,7 +120,7 @@ public class MenuMaker<T>
         	try
         	{
         		ChessPiece cp = (ChessPiece)occupant;
-        		Location loc = master.getDisplay().getPreviousLocation();
+        		Location prevLoc = master.getDisplay().getPreviousLocation();
         		
         		Class[] ClsList = new Class[1];
         		ClsList[0] = Character.TYPE;

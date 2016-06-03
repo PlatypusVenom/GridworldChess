@@ -380,7 +380,7 @@ public class GridPanel extends JPanel implements Scrollable,
      */
     public void zoomIn()
     {
-        cellSize *= 2;
+        cellSize = (int)(cellSize*1.7);
         revalidate();
     }
 
@@ -389,7 +389,7 @@ public class GridPanel extends JPanel implements Scrollable,
      */
     public void zoomOut()
     {
-        cellSize = Math.max(cellSize / 2, MIN_CELL_SIZE);
+        cellSize = Math.max((int)(cellSize / 1.7), MIN_CELL_SIZE);
         revalidate();
     }
 

@@ -162,8 +162,6 @@ public abstract class ChessPiece extends Actor implements Comparable
     	ChessPiece occupant = (ChessPiece)(getGrid().get(loc));
         if(occupant != null)
             StorageArea.takePiece((ChessPiece)occupant);
-    	
-		
     		
     	super.moveTo(loc);
     }

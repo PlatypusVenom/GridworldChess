@@ -214,29 +214,12 @@ public class GUIController<T>
             {
                 display.clearSelection();
                 ChessPiece C = (ChessPiece)occupant0;
-                if(menuOpen)
-                {
-                	
-    				setMenuOpen(false);
-        			C.moveTo(prevLoc0);
-	    			if(other != null)
-	    			{
-	    				if(other.getGrid() != null)
-	    					other.removeSelfFromGrid();
-	    				ChessBoard.add(loc0, other);
-	    			}
-	    			return;
-                }
                 
                 if(locArrayContains(locSelection, loc)) // Piece -> legal move
                 {                        
                     if(C instanceof Pawn && loc.getRow() == 0)
                     {
-                    	other = C.tryMove(loc);
-                    	if(other != null)
-                    		StorageArea.takePiece(other);
-    					
-    					setMenuOpen(true);
+                    	setMenuOpen(true);
 						MenuMaker<T> maker = new MenuMaker<T>(this, parentFrame, resources, displayMap);
             			JPopupMenu popup = maker.makePromoteMenu(occupant0, loc);
             			Point p = display.pointForLocation(loc);
@@ -246,6 +229,7 @@ public class GUIController<T>
                     {
                         C.moveTo(loc);
                         ChessBoard.takeTurn();
+                        checkStatus(C);
                         display.repaint();
                     }
                 }
