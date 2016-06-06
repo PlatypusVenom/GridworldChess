@@ -139,29 +139,8 @@ public class GUIController<T>
     private void makeControls()
     {
         controlPanel = new JPanel();
-        //sampleButton = new JButton("");
-        
         controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.X_AXIS));
         controlPanel.setBorder(BorderFactory.createEtchedBorder());
-        /*
-        Dimension spacer = new Dimension(5, sampleButton.getPreferredSize().height + 10);
-        
-        controlPanel.add(Box.createRigidArea(spacer));
-
-        controlPanel.add(sampleButton);
-        controlPanel.add(Box.createRigidArea(spacer));
-        
-        sampleButton.setEnabled(true);
-
-        controlPanel.add(Box.createRigidArea(new Dimension(5, 0)));
-
-        sampleButton.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                sampleMethod();
-            }
-        });*/
     }
 
     /**
