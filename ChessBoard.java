@@ -31,6 +31,9 @@ public class ChessBoard
 			case "Standard":
 				defaultSetup();
 				break;
+			case "Hunter Chess":
+				hunterSetup();
+				break;
 		}
 	}
 	
@@ -126,6 +129,31 @@ public class ChessBoard
     		world.add(new Location(i*7, 4), new Queen(colors[i]));
     		world.add(new Location(i*7, 5), new Bishop(colors[i]));
     		world.add(new Location(i*7, 6), new Knight(colors[i]));
+    		world.add(new Location(i*7, 7), new Rook(colors[i]));
+		}
+	}
+	
+	public static void hunterSetup()
+	{
+		clearAll();
+		char[] colors = new char[2];
+		colors[0] = 'b';
+		colors[1] = 'w';
+		whiteKing = new King('w');
+		blackKing = new King('b');
+		
+		for(int i = 0; i < 2; i++)
+		{
+			for(int j = 0; j < 8; j++)
+				world.add(new Location(6 - i*5, j), new Pawn(colors[1-i]));
+    		
+    		world.add(new Location(i*7, 0), new Rook(colors[i]));
+    		world.add(new Location(i*7, 1), new Hound(colors[i]));
+    		world.add(new Location(i*7, 2), new Archer(colors[i]));
+    		world.add(new Location(i*7, 3), getKing(colors[i]));
+    		world.add(new Location(i*7, 4), new Queen(colors[i]));
+    		world.add(new Location(i*7, 5), new Archer(colors[i]));
+    		world.add(new Location(i*7, 6), new Hound(colors[i]));
     		world.add(new Location(i*7, 7), new Rook(colors[i]));
 		}
 	}

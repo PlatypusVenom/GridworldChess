@@ -51,6 +51,40 @@ public abstract class ChessPiece extends Actor implements Comparable
             }
         }
         return locArr;
+    }
+    
+    public Location[] getStepMoves(int len, int start, int step, boolean check)
+    {
+    	Location[] locArr = new Location[len];
+    	int i = 0;
+        for(int d = start; d < 360; d += step)
+        {
+            Location loc = getLocation();
+            loc = loc.getAdjacentLocation(d);
+            if(loc == null || !loc.isOnBoard())
+            	continue;
+            ChessPiece C = (ChessPiece)(getGrid().get(loc));
+
+            if(isLegal(check, loc))
+            {
+	            locArr[i] = loc;
+	        	i++;
+	        	if(C == null)
+	        	{
+	        	    for(int k = start; k < 360; k += step)
+			        {
+			            Location loc0 = loc;
+			            loc0 = loc0.getAdjacentLocation(k);
+			            if(isLegal(check, loc0))
+			            {
+				            locArr[i] = loc0;
+				        	i++;
+			            }
+			        }
+	        	}
+            }
+        }
+        return locArr;
         
     }
     

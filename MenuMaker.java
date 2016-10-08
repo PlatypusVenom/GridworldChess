@@ -104,7 +104,8 @@ public class MenuMaker<T>
     
     public void addNewGames(JMenu menu)
     {
-        menu.add(new NGameItem("Standard"));
+        menu.add(new NGameItem("Standard Chess"));
+        menu.add(new NGameItem("Hunter Chess"));
     }
 
     private class PromoteItem extends JMenuItem implements ActionListener
